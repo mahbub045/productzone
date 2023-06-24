@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 function loginScreen() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const submitHandler = ({ phone, password }) => {
+    const submitHandler = ({ tel, password }) => {
 
     }
     return (
@@ -17,18 +17,18 @@ function loginScreen() {
             <form className="max-w-screen-md mx-auto" onSubmit={handleSubmit(submitHandler)}>
                 <h1 className="mb-4 text-xl">Login</h1>
                 <div className="mb-4">
-                    <label htmlFor="tel">Phone</label>
+                    <label htmlFor="phone">Phone</label>
                     <input
                         type="tel"
-                        {...register('tel', {
+                        {...register('phone', {
                             required: 'Please enter your phone number!',
                         })}
                         className="w-full"
-                        id="tel"
+                        id="phone"
                         maxLength='11'
                         autoFocus>
                     </input>
-                    {errors.tel && <div className="text-red-500">{errors.tel.message}</div>}
+                    {errors.phone && <div className="text-red-500">{errors.phone.message}</div>}
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password">Password</label>
