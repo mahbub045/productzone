@@ -1,7 +1,8 @@
 import Layout from '@/components/Layout';
+import data from '@/utils/data';
 import React from 'react';
 
-export default function Customers() {
+export default function Customers({ user }) {
     return (
         <Layout title='Admin'>
             <div className="flex">
@@ -144,29 +145,28 @@ export default function Customers() {
                 </div>
                 <div className="container pl-2 mx-auto mt-12">
                     <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-                        <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                            <div className="text-sm font-medium text-orange-500 truncate">
-                                Total users
-                            </div>
-                            <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                12,00
-                            </div>
-                        </div>
-                        <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                            <div className="text-sm font-medium text-orange-500 truncate">
-                                Total Profit
-                            </div>
-                            <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                $ 450k
-                            </div>
-                        </div>
-                        <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                            <div className="text-sm font-medium text-orange-500 truncate">
-                                Total Orders
-                            </div>
-                            <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                20k
-                            </div>
+                        <h1 className="mb-4 text-2xl font-bold text-orange-500">Customers List</h1>
+                        <div className='overflow-x-auto md:col-span-3'>
+                            <table className='min-w-full'>
+                                <thead className='border-b'>
+                                    <tr>
+                                        <th className='px-5 text-center text-orange-500'>Name</th>
+                                        <th className='px-5 text-center text-orange-500'>Phone</th>
+                                        <th className='px-5 text-center text-orange-500'>Address</th>
+                                        <th className='px-5 text-center text-orange-500'>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.users.map((user) => (
+                                        <tr key={user.phone} className='border-b'>
+                                            <td className='p-5 text-center'>{user.name}</td>
+                                            <td className='p-5 text-center'>{user.phone}</td>
+                                            <td className='p-5 text-center'>{user.address}</td>
+                                            <td className='p-5 text-center'>{user.isAdmin ? 'Admin' : 'User'}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
