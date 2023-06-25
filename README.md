@@ -10,6 +10,8 @@ npm run dev
 yarn dev
 # or
 pnpm dev
+
+{admin login-> phone:01700000000, password: 123456}
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -1,10 +1,11 @@
 import Layout from '@/components/Layout';
 import data from '@/utils/data';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 export default function Customers({ user }) {
     const [formValues, setFormValues] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         const storedValues = localStorage.getItem('formValues');
@@ -13,7 +14,11 @@ export default function Customers({ user }) {
             setFormValues(JSON.parse(storedValues));
         }
     }, []);
-    console.log(formValues);
+    const handleLogout = () => {
+        // Perform logout actions here
+        router.push('/login');
+        console.log('Logged out successfully!');
+    };
     return (
         <Layout title='Admin'>
             <div className="flex">
@@ -130,8 +135,8 @@ export default function Customers({ user }) {
                                 </li>
                                 <li className="rounded-sm">
                                     <a
-                                        href="#"
-                                        className="flex items-center p-2 space-x-3 text-red-600 rounded-md"
+                                        onClick={handleLogout}
+                                        className="flex items-center p-2 space-x-3 text-red-600 rounded-md cursor-pointer hover:text-orange-600"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"

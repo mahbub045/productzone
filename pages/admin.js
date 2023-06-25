@@ -1,7 +1,14 @@
 import Layout from '@/components/Layout';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 export default function admin() {
+    const router = useRouter();
+    const handleLogout = () => {
+        // Perform logout actions here
+        router.push('/login');
+        console.log('Logged out successfully!');
+    };
     return (
         <Layout title='Admin'>
             <div className="flex">
@@ -118,8 +125,8 @@ export default function admin() {
                                 </li>
                                 <li className="rounded-sm">
                                     <a
-                                        href="#"
-                                        className="flex items-center p-2 space-x-3 text-red-600 rounded-md"
+                                        onClick={handleLogout}
+                                        className="flex items-center p-2 space-x-3 text-red-600 rounded-md cursor-pointer hover:text-orange-600"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +156,7 @@ export default function admin() {
                                 Total users
                             </div>
                             <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                12,00
+                                12
                             </div>
                         </div>
                         <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
@@ -157,7 +164,7 @@ export default function admin() {
                                 Total Profit
                             </div>
                             <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                $ 450k
+                                $ 40k
                             </div>
                         </div>
                         <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
@@ -165,7 +172,7 @@ export default function admin() {
                                 Total Orders
                             </div>
                             <div className="mt-1 text-3xl font-semibold text-gray-900">
-                                20k
+                                2k
                             </div>
                         </div>
                     </div>

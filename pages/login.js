@@ -1,17 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
 import Layout from '@/components/Layout';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
+import data from '@/utils/data';
+import { useRouter } from 'next/router';
 
 
-function loginScreen() {
+function loginScreen({ user }) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const router = useRouter();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const submitHandler = ({ tel, password }) => {
+    const submitHandler = ({ phone, password }) => {
+        console.log('Phone:', phone);
+        console.log('Password:', password);
 
-    }
+        const user = data.users.find((user) => user.phone === phone && user.password === password);
+
+        if (user) {
+            router.push('/admin');
+            console.log('Login successful!');
+        } else {
+            setError('Invalid username or password');
+        }
+    };
     return (
         <Layout title="Login">
             <form className="max-w-screen-md mx-auto" onSubmit={handleSubmit(submitHandler)}>
@@ -19,12 +35,12 @@ function loginScreen() {
                 <div className="mb-4">
                     <label htmlFor="phone">Phone</label>
                     <input
+                        name='phone'
                         type="tel"
                         {...register('phone', {
                             required: 'Please enter your phone number!',
                         })}
                         className="w-full"
-                        id="phone"
                         maxLength='11'
                         autoFocus>
                     </input>
@@ -33,13 +49,13 @@ function loginScreen() {
                 <div className="mb-4">
                     <label htmlFor="password">Password</label>
                     <input
+                        name='password'
                         type="password"
                         {...register('password', {
                             required: 'Please enter password',
                             minLength: { value: 6, message: 'password is more than 5 chars' },
                         })}
                         className="w-full"
-                        id="password"
                         autoFocus
                     ></input>
                     {errors.password && (

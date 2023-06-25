@@ -37,39 +37,6 @@ export default function addCustomer() {
 
     return (
         <Layout title='Admin(Add new)'>
-            {/* <form className="max-w-screen-md mx-auto" onSubmit={handleSubmit}>
-                <h1 className="mb-4 text-xl text-orange-500">Add New Customer</h1>
-                <div className="mb-4">
-                    <label htmlFor="text">Customer Full Name</label>
-                    <input
-                        name='fullname'
-                        type="text"
-                        className="w-full"
-                        autoFocus>
-                    </input>
-                </div>
-                <div className="mb-4">
-                    <label htmlFor="phone">Customer Phone Number</label>
-                    <input
-                        name='phone'
-                        type="tel"
-                        className="w-full"
-                        autoFocus>
-                    </input>
-                </div>
-                <div className="mb-4">
-                    <label htmlFor="address">Customer Address</label>
-                    <input
-                        name='address'
-                        type="text"
-                        className="w-full"
-                        autoFocus>
-                    </input>
-                </div>
-                <div className="mb-4 ">
-                    <button type='submit' className="primary-button">Add New</button>
-                </div>
-            </form> */}
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
