@@ -1,21 +1,21 @@
 const data = {
     users: [
         {
-            name: 'Kamal Udddin',
+            fullname: 'Kamal Udddin',
             phone: '01700000000',
             address: 'Mirpur, Dhaka',
             password: '123456',
             isAdmin: true,
         },
         {
-            name: 'Rana Khan',
+            fullname: 'Rana Khan',
             phone: '01700000001',
             address: 'Dhanmondi, Dhaka',
             password: '123456',
             isAdmin: false,
         },
         {
-            name: 'Jannati Akter',
+            fullname: 'Jannati Akter',
             phone: '01700000002',
             address: 'Savar, Dhaka',
             password: '123456',

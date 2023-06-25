@@ -1,8 +1,19 @@
 import Layout from '@/components/Layout';
 import data from '@/utils/data';
-import React from 'react';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 export default function Customers({ user }) {
+    const [formValues, setFormValues] = useState([]);
+
+    useEffect(() => {
+        const storedValues = localStorage.getItem('formValues');
+        console.log(storedValues);
+        if (storedValues) {
+            setFormValues(JSON.parse(storedValues));
+        }
+    }, []);
+    console.log(formValues);
     return (
         <Layout title='Admin'>
             <div className="flex">
@@ -81,13 +92,13 @@ export default function Customers({ user }) {
                                 </li>
                                 <li className="rounded-sm">
                                     <a
-                                        href="customers"
+                                        href="addCustomer"
                                         className="flex items-center p-2 space-x-3 text-orange-500 rounded-md"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
                                         </svg>
-                                        <span>Add Customers</span>
+                                        <span>Add New Customer</span>
                                     </a>
                                 </li>
                                 <li className="rounded-sm">
@@ -150,6 +161,26 @@ export default function Customers({ user }) {
                             <table className='min-w-full'>
                                 <thead className='border-b'>
                                     <tr>
+                                        <th className='px-5 text-center text-orange-500'>Full Name</th>
+                                        <th className='px-5 text-center text-orange-500'>Phone</th>
+                                        <th className='px-5 text-center text-orange-500'>Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data.users && formValues.map((value, user, index) => (
+                                        <tr key={index} className='border-b'>
+                                            <td className='p-5 text-center'>{value.fullName}</td>
+                                            <td className='p-5 text-center'>{value.phone}</td>
+                                            <td className='p-5 text-center'>{value.address}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        {/* <div className='overflow-x-auto md:col-span-3'>
+                            <table className='min-w-full'>
+                                <thead className='border-b'>
+                                    <tr>
                                         <th className='px-5 text-center text-orange-500'>Name</th>
                                         <th className='px-5 text-center text-orange-500'>Phone</th>
                                         <th className='px-5 text-center text-orange-500'>Address</th>
@@ -167,10 +198,10 @@ export default function Customers({ user }) {
                                     ))}
                                 </tbody>
                             </table>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 }

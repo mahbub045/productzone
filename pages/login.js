@@ -15,7 +15,7 @@ function loginScreen() {
     return (
         <Layout title="Login">
             <form className="max-w-screen-md mx-auto" onSubmit={handleSubmit(submitHandler)}>
-                <h1 className="mb-4 text-xl">Login</h1>
+                <h1 className="mb-4 text-xl text-orange-500">Login</h1>
                 <div className="mb-4">
                     <label htmlFor="phone">Phone</label>
                     <input
