@@ -1,8 +1,7 @@
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
-import React from 'react';
 
-export default function admin() {
+export default function Admin() {
     const router = useRouter();
     const handleLogout = () => {
         // Perform logout actions here

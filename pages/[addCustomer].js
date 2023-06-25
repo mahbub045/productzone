@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import Link from 'next/link';
 
 
-export default function addCustomer() {
+export default function AddCustomer() {
     const [formValues, setFormValues] = useState([]);
     const router = useRouter();
     const validationSchema = Yup.object().shape({

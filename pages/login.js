@@ -1,16 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Layout from '@/components/Layout';
 import Link from 'next/link';
-import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useForm } from 'react-hook-form';
 import data from '@/utils/data';
 import { useRouter } from 'next/router';
 
 
-function loginScreen({ user }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+function LoginScreen({ user }) {
     const [error, setError] = useState('');
     const router = useRouter();
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -75,4 +72,4 @@ function loginScreen({ user }) {
         </Layout>
     )
 };
-export default dynamic(() => Promise.resolve(loginScreen), { ssr: false });
+export default dynamic(() => Promise.resolve(LoginScreen), { ssr: false });
