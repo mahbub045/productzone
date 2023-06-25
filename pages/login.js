@@ -51,7 +51,9 @@ function loginScreen() {
                 </div>
                 <div className="mb-4 ">
                     Don&apos;t have an account? &nbsp;
-                    <Link href="register">Register</Link>
+                    <Link legacyBehavior href="register">
+                        <a className='text-blue-600'>Register</a>
+                    </Link>
                 </div>
             </form>
         </Layout>

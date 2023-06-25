@@ -14,7 +14,9 @@ export default function Productitem({ product }) {
                 </Link>
                 <p className='mb-2'>{product.brand}</p>
                 <p>${product.price}</p>
-                <button className='primary-button' type='button'>Add to cart</button>
+                <Link href={`/product/${product.slug}`}>
+                    <button className='primary-button' type='button'>View Details</button>
+                </Link>
             </div>
         </div>
     )
